@@ -16,7 +16,6 @@ const ShowSearch = (props) => {
   }, []);
 
   const findShow = (query) => {
-    console.log('firing find show', query);
     setIsLoading(true);
     get(`${SEARCH_API_URL}${query}`)
       .then(({ data }) => {
@@ -31,7 +30,7 @@ const ShowSearch = (props) => {
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
-  }
+  };
 
   return (
     <div>
@@ -39,21 +38,28 @@ const ShowSearch = (props) => {
         <h1>Show Finder</h1>
       </header>
       <section className="page-body">
-        <div className='search-wrapper'>
-          
+        <div className="search-wrapper">
           <div className="search-box">
-            <div className='input-wrapper'>
-              <span className='icon-wrapper'>
-                <img src='/search-icon.png'></img>
+            <div className="input-wrapper">
+              <span className="icon-wrapper">
+                <img src="/search-icon.png"></img>
               </span>
-              <input type="text" value={inputValue} placeholder='search show titles' onChange={handleChange} />
+              <input
+                type="text"
+                value={inputValue}
+                placeholder="search show titles"
+                onChange={handleChange}
+              />
             </div>
           </div>
-          <div className='button-wrapper' onClick={findShow.bind(null, inputValue)}>
+          <div
+            className="button-wrapper"
+            onClick={findShow.bind(null, inputValue)}
+          >
             Search
           </div>
         </div>
-        
+
         {!isLoading &&
           shows &&
           shows.map(({ score, show }, index) => {
@@ -66,20 +72,19 @@ const ShowSearch = (props) => {
                 }}
                 key={index}
               >
-                <div className='show-cover'>
+                <div className="show-cover">
                   <img src={show.image?.medium}></img>
                 </div>
-                <div className='show-details'>
+                <div className="show-details">
                   <h1>{show.name}</h1>
-                  <span dangerouslySetInnerHTML={{__html:show.summary}}></span>
-
+                  <span
+                    dangerouslySetInnerHTML={{ __html: show.summary }}
+                  ></span>
                 </div>
-                
               </div>
             );
           })}
         {isLoading && <h1>LOADING...</h1>}
-        
       </section>
     </div>
   );

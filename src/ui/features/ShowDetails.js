@@ -3,16 +3,11 @@ import { useHistory, useParams } from "react-router-dom";
 import { isEmpty } from "lodash";
 
 const ShowDetails = (props) => {
-
   const { id } = useParams();
-
-
-  //debugger;
 
   return (
     <div>
       <h1>Show details for show id {id}</h1>
-      
     </div>
   );
 };
