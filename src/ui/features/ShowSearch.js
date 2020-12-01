@@ -46,7 +46,7 @@ const ShowSearch = (props) => {
               <span className='icon-wrapper'>
                 <img src='/search-icon.png'></img>
               </span>
-              <input type="text" value={inputValue} onChange={handleChange} />
+              <input type="text" value={inputValue} placeholder='search show titles' onChange={handleChange} />
             </div>
           </div>
           <div className='button-wrapper' onClick={findShow.bind(null, inputValue)}>
